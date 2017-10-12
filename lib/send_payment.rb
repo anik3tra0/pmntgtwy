@@ -23,7 +23,8 @@ class SendPayment
 		request.body = request.body.to_json
 		#
 		# response = http.request(request)
-		puts request.body
+		# puts request.body
+		request.body
 	end
 
 	private
