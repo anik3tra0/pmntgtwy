@@ -4,6 +4,7 @@ require 'base64'
 require 'uri'
 require 'net/http'
 require 'json'
+require './lib/receive_payment'
 
 class SendPayment
 	ENCRYPTION_KEY = 'Q9fbkBF8au24C9wshGRW9ut8ecYpyXye5vhFLtHFdGjRg3a4HxPYRfQaKutZx5N4'
@@ -21,10 +22,10 @@ class SendPayment
 		request["content-type"] = 'application/json'
 		request.body = { msg: encrypted_payload }
 		request.body = request.body.to_json
-		#
+
 		# response = http.request(request)
 		# puts request.body
-		request.body
+		ReceivePayment.new(request.body).authorize
 	end
 
 	private
@@ -35,7 +36,7 @@ class SendPayment
 
 	def payload_with_hash
 		hash = Digest::SHA1.hexdigest(stringify)
-		stringify + "hash=#{hash}"
+		stringify + "|hash=#{hash}"
 	end
 
 	def encrypted_payload
@@ -45,6 +46,11 @@ class SendPayment
 		cipher.iv = ENCRYPTION_IV
 		encrypted_payload = cipher.update(payload_with_hash) + cipher.final
 		Base64.encode64(encrypted_payload)
+	end
+
+	def fake
+		payload = { msg: encrypted_payload }
+		payload.to_json
 	end
 
 end
