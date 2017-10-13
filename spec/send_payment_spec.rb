@@ -27,8 +27,8 @@ RSpec.describe SendPayment do
 
 		describe '#make' do
 			it 'makes a transaction request to server and prints the response' do
-				response = JSON.parse(@send_payment.make)
-				expect(response.dig('msg')).to match(/^(?:[A-Za-z0-9+\/]{4}\n?)*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+
+				expect(@send_payment.make).to include('|bank_ifsc_code', '|bank_account_number', '|amount', '|merchant_transaction_ref', '|transaction_date', '|payment_gateway_merchant_reference', '|payment_gateway_transaction_reference', 'hash')
 			end
 		end
 

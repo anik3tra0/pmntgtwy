@@ -12,7 +12,7 @@ class ReceivePayment
 	end
 
 	def authorize
-		verified? ? 'txn_status=success|' + decrypt : 'txn_status=failure|' + decrypt
+		verified? ? 'txn_status=success|' + decrypt + '|payment_gateway_transaction_reference=pg_txn_0001' : 'txn_status=failure|' + decrypt + '|payment_gateway_transaction_reference=pg_txn_0001'
 	end
 
 	private
