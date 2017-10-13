@@ -34,7 +34,7 @@ class ReceivePayment
 		received_hash_key = split_hash[1]
 		transaction_string = split_hash[0]
 		this_hash_key = Digest::SHA1.hexdigest(transaction_string)
-		this_hash_key === received_hash_key ? true : false
+		this_hash_key === received_hash_key
 	end
 
 end
