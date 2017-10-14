@@ -17,7 +17,9 @@ pry -r ./lib/send_payment.rb
 
 ### Todo
 
-- Data Validation
-- Edge Cases
-- ReceivePayment Specs
-- More Usage Examples
+- [x] Send Payment Data Validation
+- [ ] Send Payment Data Validation Specs
+- [ ] Edge Cases Handling
+- [ ] Edge Cases Handling Specs
+- [ ] ReceivePayment Specs
+- [ ] More Usage Examples
