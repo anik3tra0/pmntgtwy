@@ -1,5 +1,4 @@
 [<img src="https://travis-ci.org/anik3tra0/pmntgtwy.svg?branch=master">]()
-[![Test Coverage](https://api.codeclimate.com/v1/badges/07dc716514f2f81693bf/test_coverage)](https://codeclimate.com/github/anik3tra0/pmntgtwy/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/07dc716514f2f81693bf/maintainability)](https://codeclimate.com/github/anik3tra0/pmntgtwy/maintainability)
 
 # PMNTGTWY

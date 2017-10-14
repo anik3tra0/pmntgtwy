@@ -90,19 +90,19 @@ RSpec.describe SendPayment do
 	context 'In a Invalid Payment Request Scenario' do
 
 		describe 'in case of a invalid transaction' do
-			it 'checks if any key is missing then transaction should fail' do
-				transaction = { amount: '105000', merchant_transaction_ref: 'txn001', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }
+			it 'fails if any key is missing' do
+				transaction = { amt: '105000', merchant_transaction_ref: 'txn001', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }
 				@send_payment = SendPayment.new(transaction)
 				expect(@send_payment.make).to match 'Invalid Transaction'
 			end
 
-			it 'checks if all keys are missing then transaction should fail' do
+			it 'fails if all keys are missing' do
 				transaction = {}
 				@send_payment = SendPayment.new(transaction)
 				expect(@send_payment.make).to match('Invalid Transaction')
 			end
 
-			it 'checks if any value is missing then transaction should fail' do
+			it 'fails if any value is missing' do
 				transaction = { bank_ifsc_code: 'ANZB0001122', bank_account_number: '1111222233334444', amount: '105000', merchant_transaction_ref: '', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }
 				@send_payment = SendPayment.new(transaction)
 				expect(@send_payment.make).to match('Invalid Transaction')
