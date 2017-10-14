@@ -20,7 +20,7 @@ pry -r ./lib/send_payment.rb
 
 - [x] Send Payment Data Validation
 - [x] Send Payment Data Validation Specs
-- [ ] Edge Cases Handling
-- [ ] Edge Cases Handling Specs
+- [x] Send Payment Edge Cases Handling
+- [x] Send Payment Edge Cases Handling Specs
 - [ ] ReceivePayment Specs
 - [ ] Documentation && More Usage Examples
