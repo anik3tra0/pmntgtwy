@@ -68,19 +68,25 @@ class SendPayment
 	end
 
 	def valid_bank_account_number?
-		@transaction.dig(:bank_account_number) =~ /^[0-9]{9,18}|(?=a)b/ ? true : false
+		number = @transaction.dig(:bank_account_number)
+		return true if number && number.respond_to?(:to_i) && (number.length > 9 && number.length < 18)
+		false
 	end
 
 	def valid_bank_ifsc_code?
-		@transaction.dig(:bank_ifsc_code) =~ /^[A-Za-z]{4}\d{7}$|(?=a)b/ ? true : false
+		ifsc_code = @transaction.dig(:bank_ifsc_code)
+		return true if ifsc_code && ifsc_code.length == 11 && (ifsc_code =~ /^[A-Za-z]{4}\d{7}$|(?=a)b/ ? true : false)
+		false
 	end
 
 	def valid_amount?
-		@transaction.dig(:amount).to_i.positive?
+		(@transaction.dig(:amount).respond_to?(:to_i) && @transaction.dig(:amount).to_i.positive?)
 	end
 
 	def valid_merchant_txn_ref?
-		@transaction.dig(:merchant_transaction_ref) =~ /^(txn){0,3}[0-9]*/ ? true : false
+		ref_number = @transaction.dig(:merchant_transaction_ref)
+		return true if ref_number && ref_number.start_with?('txn') && (ref_number =~ /^(txn){0,3}[0-9]*/ ? true : false)
+		false
 	end
 
 	def valid_txn_date?
@@ -88,7 +94,9 @@ class SendPayment
 	end
 
 	def pmt_gtwy_merchant_ref?
-		@transaction.dig(:payment_gateway_merchant_reference) =~ /^(merc){0,4}[0-9]*/ ? true : false
+		ref_number = @transaction.dig(:payment_gateway_merchant_reference)
+		return true if ref_number && ref_number.start_with?('merc') && (ref_number =~ /^(txn){0,3}[0-9]*/ ? true : false)
+		false
 	end
 
 	def is_valid?
