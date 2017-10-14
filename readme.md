@@ -22,4 +22,4 @@ pry -r ./lib/send_payment.rb
 - [ ] Edge Cases Handling
 - [ ] Edge Cases Handling Specs
 - [ ] ReceivePayment Specs
-- [ ] More Usage Examples
+- [ ] Documentation && More Usage Examples
