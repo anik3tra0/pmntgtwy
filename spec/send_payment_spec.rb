@@ -1,6 +1,6 @@
 require 'send_payment'
 RSpec.describe SendPayment do
-	context 'with a outward payment request' do
+	context 'with a valid outward payment request' do
 
 		before(:each) do
 			transaction = { bank_ifsc_code: 'ANZB0001122', bank_account_number: '1111222233334444', amount: '105000', merchant_transaction_ref: 'txn001', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }
@@ -27,8 +27,31 @@ RSpec.describe SendPayment do
 
 		describe '#make' do
 			it 'makes a transaction request to server and prints the response' do
+				expect(@send_payment.make).to include('|bank_ifsc_code', '|bank_account_number', '|amount', '|merchant_transaction_ref', '|transaction_date', '|payment_gateway_merchant_reference', '|payment_gateway_transaction_reference', '|hash')
+			end
+		end
 
-				expect(@send_payment.make).to include('|bank_ifsc_code', '|bank_account_number', '|amount', '|merchant_transaction_ref', '|transaction_date', '|payment_gateway_merchant_reference', '|payment_gateway_transaction_reference', 'hash')
+	end
+
+	context 'with a invalid outward payment reqest' do
+
+		describe 'for invalid transaction' do
+			it 'checks if any key is missing then transaction should fail' do
+				transaction = { amount: '105000', merchant_transaction_ref: 'txn001', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }
+				@send_payment = SendPayment.new(transaction)
+				expect(@send_payment.make).to match 'Invalid Transaction'
+			end
+
+			it 'checks if all keys are missing then transaction should fail' do
+				transaction = {}
+				@send_payment = SendPayment.new(transaction)
+				expect(@send_payment.make).to match('Invalid Transaction')
+			end
+
+			it 'checks if any value is missing then transaction should fail' do
+				transaction = { bank_ifsc_code: 'ANZB0001122', bank_account_number: '1111222233334444', amount: '105000', merchant_transaction_ref: '', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }
+				@send_payment = SendPayment.new(transaction)
+				expect(@send_payment.make).to match('Invalid Transaction')
 			end
 		end
 
