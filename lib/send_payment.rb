@@ -5,7 +5,6 @@ require 'uri'
 require 'net/http'
 require 'json'
 require './lib/receive_payment'
-require 'pry'
 
 class SendPayment
 	attr_reader :transaction
