@@ -24,6 +24,8 @@ Returns a new instance of SendPayment
 
 Returns a new instance of ReceivePayment
 
+Receive Payment is a class that takes in one argument of fixed set of values called transaction. Transaction is a payment request that Send Payment Object makes. It contains Bank IFSC Code, Bank Account Number, Amount, Merchant Transaction Reference, Transaction Date & Payment Gateway Merchant Reference along with a SHA1 Digest of the entire Payload.
+
 ### Instance Method Details
 `#authorize ⇒ JSON`
 
