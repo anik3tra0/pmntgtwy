@@ -1,7 +1,7 @@
 require 'receive_payment'
 require 'send_payment'
 RSpec.describe ReceivePayment do
-	context 'with a inward payment request' do
+	context 'In A Valid Inward Payment Request Scenario' do
 
 		before(:each) do
 			transaction = { bank_ifsc_code: 'ANZB0001122', bank_account_number: '1111222233334444', amount: '105000', merchant_transaction_ref: 'txn001', transaction_date: '2017-10-12', payment_gateway_merchant_reference: 'merc001' }

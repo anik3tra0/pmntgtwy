@@ -5,6 +5,28 @@
 
 Client & Server Implementation of a payment transaction with encryption and encoding.
 
+Send Payment is a class that takes in one argument of fixed set of values called transaction. Transaction is a payment request that contains Bank IFSC Code, Bank Account Number, Amount, Merchant Transaction Reference, Transaction Date & Payment Gateway Merchant Reference.
+
+## Class: SendPayment
+
+### Constructor Details
+`#initialize(transaction) ⇒ SendPayment`
+
+Returns a new instance of SendPayment
+
+### Instance Method Details
+`#make ⇒ String`
+
+## Class: ReceivePayment
+
+### Constructor Details
+`#initialize(transaction) ⇒ ReceivePayment`
+
+Returns a new instance of ReceivePayment
+
+### Instance Method Details
+`#authorize ⇒ JSON`
+
 ### Usage
 
 ```sh
@@ -22,5 +44,8 @@ pry -r ./lib/send_payment.rb
 - [x] Send Payment Data Validation Specs
 - [x] Send Payment Edge Cases Handling
 - [x] Send Payment Edge Cases Handling Specs
-- [ ] ReceivePayment Specs
+- [ ] Receive Payment Specs
+- [ ] Receive Payment Data Validation Specs
+- [ ] Receive Payment Edge Cases Handling
+- [ ] Receive Payment Edge Cases Handling Specs
 - [ ] Documentation && More Usage Examples
