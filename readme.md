@@ -5,9 +5,9 @@
 
 Client & Server Implementation of a payment transaction with encryption and encoding.
 
-Send Payment is a class that takes in one argument of fixed set of values called transaction. Transaction is a payment request that contains Bank IFSC Code, Bank Account Number, Amount, Merchant Transaction Reference, Transaction Date & Payment Gateway Merchant Reference.
-
 ## Class: SendPayment
+
+Send Payment is a class that takes in one argument of fixed set of values called transaction. Transaction is a payment request that contains Bank IFSC Code, Bank Account Number, Amount, Merchant Transaction Reference, Transaction Date & Payment Gateway Merchant Reference.
 
 ### Constructor Details
 `#initialize(transaction) ⇒ SendPayment`
