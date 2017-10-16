@@ -28,7 +28,8 @@ class SendPayment
 
 			# response = http.request(request)
 			# puts request.body
-			ReceivePayment.new(request.body).authorize
+			response = ReceivePayment.new(request.body).authorize
+			JSON.parse(response, object_class: OpenStruct)
 		else
 			'Invalid Transaction'
 		end

@@ -17,9 +17,9 @@ class ReceivePayment
 
 	private
 
-	def format_json(string, success)
+	def format_json(string)
 		hash = { data: string }
-		hash.to_json 
+		hash.to_json
 	end
 
 	def decode_base64

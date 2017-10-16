@@ -27,7 +27,7 @@ RSpec.describe SendPayment do
 
 		describe '#make' do
 			it 'makes a transaction request to server and prints the response' do
-				expect(@send_payment.make).to include('|bank_ifsc_code', '|bank_account_number', '|amount', '|merchant_transaction_ref', '|transaction_date', '|payment_gateway_merchant_reference', '|payment_gateway_transaction_reference', '|hash')
+				expect(@send_payment.make.data).to include('|bank_ifsc_code', '|bank_account_number', '|amount', '|merchant_transaction_ref', '|transaction_date', '|payment_gateway_merchant_reference', '|payment_gateway_transaction_reference', '|hash')
 			end
 		end
 
