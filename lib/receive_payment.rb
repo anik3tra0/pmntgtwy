@@ -12,10 +12,15 @@ class ReceivePayment
 	end
 
 	def authorize
-		verified? ? 'txn_status=success|' + decrypt + '|payment_gateway_transaction_reference=pg_txn_0001' : 'txn_status=failure|' + decrypt + '|payment_gateway_transaction_reference=pg_txn_0001'
+		verified? ? format_json('txn_status=success|' + decrypt + '|payment_gateway_transaction_reference=pg_txn_0001') : format_json('txn_status=failure|' + decrypt + '|payment_gateway_transaction_reference=pg_txn_0001')
 	end
 
 	private
+
+	def format_json(string, success)
+		hash = { data: string }
+		hash.to_json 
+	end
 
 	def decode_base64
 		Base64.decode64(@transaction)
