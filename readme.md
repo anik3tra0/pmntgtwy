@@ -15,7 +15,7 @@ Send Payment is a class that takes in one argument of fixed set of values called
 Returns a new instance of SendPayment
 
 ### Instance Method Details
-`#make ⇒ String`
+`#make ⇒ Struct`
 
 ## Class: ReceivePayment
 
